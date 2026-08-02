@@ -11,7 +11,7 @@
 [![Min SDK](https://img.shields.io/badge/Min%20SDK-24-00B4D8?style=for-the-badge)](#requirements)
 [![License](https://img.shields.io/badge/License-Freeware-lightgrey?style=for-the-badge)](#license)
 
-[⬇️ Download Latest APK](#-download) · [✨ Features](#-features) · [📲 How It Works](#-how-it-works) · [🛠 Build From Source](#-build-from-source)
+[⬇️ Download Latest APK](https://github.com/MegaMind2999/grand-take-attendance/releases/latest) · [✨ Features](#-features) · [📲 How It Works](#-how-it-works) · [🛠 About the Build](#-about-the-build)
 
 </div>
 
