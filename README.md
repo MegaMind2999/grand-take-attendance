@@ -35,10 +35,12 @@ No accounts. No servers. No cellular data. Just Bluetooth.
 | 📶 **BLE Attendance Sessions** | Teachers broadcast a live session; students check in automatically over Bluetooth LE |
 | 🔒 **Device Fingerprinting** | Cross-checks each student's device against their attendance history to flag suspicious check-ins |
 | 📊 **Per-Course History** | Every student can review attended days, timestamps, and session codes for each course |
-| 🗑️ **Recycle Bin** | Deleted courses aren't gone forever — restore or permanently purge from one screen |
+| 🗺️ **Faculty Map** | Built-in offline-ready interactive campus map — powered by a local NanoHTTPD server and opens in a Chrome Custom Tab |
+| ♻️ **Recycle Bin** | Deleted courses aren't gone forever — restore or permanently purge from one screen |
 | 🎨 **Animated Backgrounds** | A subtle, theme-aware animated backdrop across the whole app (toggleable in Settings) |
 | 🌓 **Light & Dark Themes** | Full Material 3 dynamic color support, tuned for both modes |
-| 🔄 **Built-in Updates** | Checks this very repo's Releases page for new versions — no Play Store required |
+| 🔄 **In-App Updates** | Checks this very repo's Releases page for new versions, downloads, and installs — all from inside the app |
+| 📤 **Excel Export** | Export attendance data to `.xlsx` format for reporting and archival |
 | 🔐 **Local-Only Data** | Everything is stored on-device with Room + DataStore — nothing leaves the phone |
 
 ---
@@ -65,13 +67,35 @@ No accounts. No servers. No cellular data. Just Bluetooth.
 
 ---
 
-## ⬇️ Download
+## 🗺️ Faculty Map
+
+The app includes a full interactive campus map that runs **completely offline**:
+
+- Built as a React SPA embedded in the app's assets
+- Served locally via a **NanoHTTPD server** running on `localhost`
+- Opens instantly in a **Chrome Custom Tab** — full JavaScript, SVG rendering, and touch interactions
+- No internet required after the initial install
+- Accessible from **Settings** with a dedicated hero card
+
+---
+
+## ⬇️ Download & Updates
 
 Grab the latest signed APK straight from the **[Releases page](https://github.com/MegaMind2999/grand-take-attendance/releases/latest)**.
 
 > **First-time install:** Since this isn't distributed via the Play Store, Android will ask you to allow installs from this source the first time — that's expected and safe for a sideloaded APK you trust.
 
-Once installed, the app checks this repo for new versions right from **Settings → Check for Updates**, and can download & install updates in-app.
+### In-App Update Flow
+
+Once installed, the app can keep itself up to date:
+
+1. Go to **Settings → Software Update** and tap **Check**
+2. If a new release exists on GitHub, a dialog shows the version info and release notes
+3. Tap **Download & Install** — the APK is downloaded via the system `DownloadManager`
+4. Once finished, Android's package installer launches automatically
+5. Follow the on-screen prompts to complete the update
+
+The updater compares your app's `versionCode` against the first line of the latest GitHub release body — so make sure the release notes start with the version code number (e.g. `"5"` as the very first line).
 
 ---
 
@@ -83,7 +107,7 @@ Once installed, the app checks this repo for new versions right from **Settings 
 | `ACCESS_FINE_LOCATION` / `ACCESS_COARSE_LOCATION` | Required by Android for BLE scanning on Android 11 and below |
 | `POST_NOTIFICATIONS` | Download progress notification for in-app updates (Android 13+) |
 | `REQUEST_INSTALL_PACKAGES` | Lets the app prompt you to install downloaded updates |
-| `INTERNET` | Only used to check this repo's Releases API and download the update APK |
+| `INTERNET` | Used to check this repo's Releases API, download update APKs, and load the Faculty Map via localhost |
 
 No data is ever transmitted off the device beyond the update check.
 
@@ -99,7 +123,10 @@ This repository distributes the app as a **pre-built, signed APK only** — sour
 - **Room** for local persistence, **DataStore** for preferences
 - **Navigation Compose** for in-app routing
 - BLE via the Android Bluetooth LE APIs
-- **FastExcel** for attendance export, **Lottie** for animations
+- **NanoHTTPD** for the local Faculty Map server
+- **Chrome Custom Tabs** for the Faculty Map front-end
+- **FastExcel** for `.xlsx` attendance export
+- **Lottie** for animations
 
 ---
 
